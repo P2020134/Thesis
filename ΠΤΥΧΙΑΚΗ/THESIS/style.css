@@ -1,0 +1,57 @@
+/* Import Google Fonts at the top */
+
+@import url('https://fonts.googleapis.com/css?lang=en&family=Product+Sans|Roboto:400,700');
+
+body {
+  font-family: 'Product Sans', 'Roboto', sans-serif;
+  width: 450px;
+  height: 600px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+button {
+  margin-bottom: 10px;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all .3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  margin-right: 10px; /* Add horizontal margin between buttons */
+  width: 180px; /* Specify the width of the button */
+  height: 120px; /* Specify the height of the button */
+}
+
+button:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.button-text {
+  margin-top: 5px; /* Add space between icon and text */
+}
+
+.icon{
+  width: 70px;
+  height: auto; /* Maintain aspect ratio */
+  grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+  display: grid;
+  display: block; /* Ensure the image is treated as a block element */
+  margin: auto; /* Center the image horizontally */
+  
+}
+
+
+

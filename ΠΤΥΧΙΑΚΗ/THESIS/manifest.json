@@ -1,0 +1,37 @@
+{
+  "name": "Accesibility for ALL",
+  "description": "Chrome extension that improves access on the web using techniques like: Text-Size Adjuster & Voice/Keyboard Handling",
+  "version": "0.0.3",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "./popup.html",
+    "default_icon": "./icon01.png"
+  },
+  "icons": {
+    "16": "./icon01.png",
+    "48": "./icon01.png",
+    "128": "./icon01.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": { "service_worker": "background.js" },
+  "web_accessible_resources": [
+    {
+      "resources": ["*://pagead2.googlesyndication.com/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "permissions": [
+    "activeTab",    
+    "scripting",    
+    "tabs"   ,
+    "storage"       
+  ],
+  "content_security_policy": {
+    
+  }
+}

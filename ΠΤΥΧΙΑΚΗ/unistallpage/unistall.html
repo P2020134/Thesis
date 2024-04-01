@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Feedback Form</title>
+  <link rel="stylesheet" href="unistall.css">
+</head>
+<body>
+  <h1>Extension Feedback Form</h1>
+
+  <p>Please complete the following form to help us understand your experience with our extension.</p>
+
+  <form action="connect.php" method="post">
+
+    <h2>Satisfaction Rating</h2>
+    <p>Please rate your overall satisfaction with the project:</p>
+    <input type="checkbox" id="very_dissatisfied" name="satisfaction" value="1">
+    <label for="very_dissatisfied">1 (Very Dissatisfied)</label><br>
+    <input type="checkbox" id="somewhat_dissatisfied" name="satisfaction" value="2">
+    <label for="somewhat_dissatisfied">2 (Somewhat Dissatisfied)</label><br>
+    <input type="checkbox" id="neutral" name="satisfaction" value="3">
+    <label for="neutral">3 (Neutral)</label><br>
+    <input type="checkbox" id="somewhat_satisfied" name="satisfaction" value="4">
+    <label for="somewhat_satisfied">4 (Somewhat Satisfied)</label><br>
+    <input type="checkbox" id="very_satisfied" name="satisfaction" value="5">
+    <label for="very_satisfied">5 (Very Satisfied)</label><br>
+
+    <h2>Project Effectiveness</h2>
+    <p>Do you believe the project objectives were met?</p>
+    <input type="checkbox" id="not_at_all" name="effectiveness" value="1">
+    <label for="not_at_all">1 (Not at all)</label><br>
+    <input type="checkbox" id="slightly" name="effectiveness" value="2">
+    <label for="slightly">2 (Slightly)</label><br>
+    <input type="checkbox" id="moderately" name="effectiveness" value="3">
+    <label for="moderately">3 (Moderately)</label><br>
+    <input type="checkbox" id="mostly" name="effectiveness" value="4">
+    <label for="mostly">4 (Mostly)</label><br>
+    <input type="checkbox" id="completely" name="effectiveness" value="5">
+    <label for="completely">5 (Completely)</label><br>
+
+    <h2>Communication</h2>
+    <p>How would you rate the effectiveness of our communication?</p>
+    <input type="checkbox" id="very_ineffective" name="communication" value="1">
+    <label for="very_ineffective">1 (Very Ineffective)</label><br>
+    <input type="checkbox" id="ineffective" name="communication" value="2">
+    <label for="ineffective">2 (Ineffective)</label><br>
+    <input type="checkbox" id="neutral_comm" name="communication" value="3">
+    <label for="neutral_comm">3 (Neutral)</label><br>
+    <input type="checkbox" id="effective" name="communication" value="4">
+    <label for="effective">4 (Effective)</label><br>
+    <input type="checkbox" id="very_effective" name="communication" value="5">
+    <label for="very_effective">5 (Very Effective)</label><br>
+
+    <h2>Short Answer Questions</h2>
+    <ol>
+      <li>
+        <label for="valuable_aspect">Why are you uninstalling the extension?</label><br>
+        <textarea id="valuable_aspect" name="valuable_aspect" rows="4" cols="50"></textarea>
+      </li>
+      <li>
+        <label for="challenges_faced">Are there any features you wished the extension had?</label><br>
+        <textarea id="challenges_faced" name="challenges_faced" rows="4" cols="50"></textarea>
+      </li>
+      <li>
+        <label for="suggestions">Do you have suggestions for improvement?</label><br>
+        <textarea id="suggestions" name="suggestions" rows="4" cols="50"></textarea>
+      </li>
+      <li>
+        <label for="recommend_services">Did you find the extension easy to use?</label><br>
+        <textarea id="recommend_services" name="recommend_services" rows="4" cols="50"></textarea>
+      </li>
+      <li>
+        <label for="additional_comments">Any additional comments?</label><br>
+        <textarea id="additional_comments" name="additional_comments" rows="4" cols="50"></textarea>
+      </li>
+    </ol>
+
+    <button type="submit">Submit Feedback</button>
+
+  </form>
+
+  <p>Please submit your completed form to the project coordinator. Thank you for your feedback!</p>
+</body>
+</html>
