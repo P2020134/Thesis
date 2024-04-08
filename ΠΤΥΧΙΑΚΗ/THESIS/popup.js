@@ -154,7 +154,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Event listener for enlarging the cursor button
   document.getElementById('enlargeCursorButton').addEventListener('click', function() {
     // Send message to background.js to trigger cursor enlargement
     chrome.runtime.sendMessage({ command: "enlargeCursor" }, function(response) {
