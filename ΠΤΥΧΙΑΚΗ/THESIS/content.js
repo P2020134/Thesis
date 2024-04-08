@@ -44,9 +44,8 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   if (message.command === "enlargeCursor") {
-    // Construct the complete URL to the custom cursor image using chrome.runtime.getURL
-    let customCursorUrl = chrome.runtime.getURL("/images/BiggerCursor1.png");
-    
+    // Construct the complete URL to the custom cursor image
+    let customCursorUrl = chrome.runtime.getURL("images/BiggerCursor.png");
     // Set the cursor using the complete URL
     document.body.style.cursor = "url('" + customCursorUrl + "'), auto";
   }

@@ -1,47 +1,50 @@
-chrome.runtime.onInstalled.addListener((e) => {
-  if (e.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+// Listen for extension installation event
+chrome.runtime.onInstalled.addListener((details) => {
+  if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+    // Set uninstall URL
+    chrome.runtime.setUninstallURL("https://forms.gle/TwXH77zFgNnfY1rX6");
 
-    chrome.runtime.setUninstallURL(
-      "https://forms.gle/TwXH77zFgNnfY1rX6" //unistall page 
-    )
-
+    // Open onboarding page
     chrome.tabs.create({
-      url: "onboardingsite/onboarding1.1.html" //onboarding page
-    })
+      url: "onboardingsite/onboarding1.1.html"
+    });
   }
-})
+});
 
-
-// background.js
+// Handle message to save initial state
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "saveInitialState") {
     // Save the initial state in Chrome storage
     chrome.storage.local.set({ initialState: message.initialState }, () => {
-      console.log("Initial state saved:", message.initialState);
+      if (chrome.runtime.lastError) {
+        console.error("Error saving initial state:", chrome.runtime.lastError.message);
+      } else {
+        console.log("Initial state saved:", message.initialState);
+      }
     });
   }
 });
 
-
-
-
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  // Check if the message is requesting to enlarge the cursor
+// Handle message to enlarge cursor
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.command === "enlargeCursor") {
-    // Send message to the content script to enlarge the cursor
-    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, { command: "enlargeCursor" });
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (tabs.length > 0) {
+        chrome.scripting.executeScript({
+          target: { tabId: tabs[0].id },
+          files: ["content.js"], // Specify the content script file
+          function: () => {
+            if (chrome.runtime.lastError) {
+              console.error("Error executing content script:", chrome.runtime.lastError.message);
+            } else {
+              console.log("Content script executed successfully.");
+            }
+          }
+        });
+      } else {
+        console.error("No active tabs found.");
+      }
     });
-
-    // Add a small delay before sending the response
-    setTimeout(function() {
-      sendResponse({ status: true });
-    }, 1);
-
-    // Return true to indicate that a response will be sent asynchronously
-    return true;
   }
 });
-
-
 
