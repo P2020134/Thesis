@@ -119,6 +119,33 @@ function displaySummarizedText(summary) {
   summarizedTextDiv.textContent = summary;
 }
 
+// Function to enable keyboard navigation outline
+function enableKeyboardOutline() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.scripting.executeScript({
+      target: { tabId: tabs[0].id },
+      func: function () {
+        // Add outline style to all focusable elements
+        const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        focusableElements.forEach(element => {
+          element.addEventListener('focus', function () {
+            element.style.outline = '2px solid black'; // Change outline color and width as needed
+          });
+          element.addEventListener('blur', function () {
+            element.style.outline = ''; // Remove outline when focus is lost
+          });
+        });
+      }
+    });
+  });
+}
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
   // Initialization
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -158,6 +185,6 @@ document.addEventListener('DOMContentLoaded', function () {
     chrome.runtime.sendMessage({ command: "enlargeCursor" });
   });
 
-
+  document.getElementById('enableOutlineButton').addEventListener('click', enableKeyboardOutline);
 });
  
