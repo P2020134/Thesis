@@ -129,11 +129,26 @@ function enableKeyboardOutline() {
         const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
         focusableElements.forEach(element => {
           element.addEventListener('focus', function () {
-            element.style.outline = '2px solid black'; // Change outline color and width as needed
+            element.style.outline = '2px solid blue'; // Change outline color and width as needed
           });
           element.addEventListener('blur', function () {
             element.style.outline = ''; // Remove outline when focus is lost
           });
+        });
+
+        // Scroll page up or down on arrow key press
+        document.addEventListener('keydown', function (event) {
+          switch (event.key) {
+            case 'ArrowUp':
+              window.scrollBy(0, -100); // Adjust the value as needed for the desired scrolling distance
+              break;
+            case 'ArrowDown':
+              window.scrollBy(0, 100); // Adjust the value as needed for the desired scrolling distance
+              break;
+            default:
+              return;
+          }
+          event.preventDefault();
         });
       }
     });
