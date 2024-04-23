@@ -13,7 +13,6 @@ function handleScroll(event) {
       window.location.href = prevPage;
     }
   }
-  
   // Function to get the URL of the next HTML page
   function getNextPage() {
     // Define an array with the filenames of your HTML pages in the desired order
