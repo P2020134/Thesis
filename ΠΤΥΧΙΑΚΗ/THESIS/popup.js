@@ -62,6 +62,7 @@ function enlargeCursor() {
   });
 }
 
+
 function toggleDesaturation() {
   console.log("Sending message to toggle desaturation...");
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
@@ -125,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var removeImagesButton = document.getElementById('removeImagesButton');
     var revertButton = document.getElementById('revertButton');
     var SaturationButton= document.getElementById("SaturationButton");
-    var selectTextButton = document.getElementById('selectTextButton');
+   
 
     // Event listeners
     increaseButton.addEventListener('click', function () {
@@ -146,9 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     SaturationButton.addEventListener("click", toggleDesaturation);
 
-    selectTextButton.addEventListener('click', function() {
-      enableTextSelection();
-    });
+   
   });
 
   document.getElementById('enlargeCursorButton').addEventListener('click', function() {
@@ -156,5 +155,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   document.getElementById('enableOutlineButton').addEventListener('click', enableKeyboardOutline);
+
+
+  
+
 });
  

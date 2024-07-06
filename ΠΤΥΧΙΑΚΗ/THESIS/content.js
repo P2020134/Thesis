@@ -10,35 +10,44 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 
 
+
+
+
+let state = 0; // 0: normal, 1: desaturated, 2: saturated
+
+
+function saturateWebsite(){
+  document.body.style.filter = "saturate(200%)";
+}
 // Function to desaturate the website
 function desaturateWebsite() {
   // Apply CSS filter to desaturate the entire body of the webpage
   document.body.style.filter = "grayscale(100%)";
 }
 
-// Function to remove desaturation from the website
-function removeDesaturation() {
-  // Reset the CSS filter to remove desaturation
+
+// Function to remove all filters
+function removeFilters() {
   document.body.style.filter = "none";
 }
 
-
+// OLD CODE THAT DESATURATES THAT ALSO WORKS 
 // Listen for messages from the extension popup
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   console.log("Message received:", message);
-  // Check if the message is to toggle desaturation
   if (message.command === "toggleDesaturation") {
-    console.log("Toggling desaturation...");
-    // Toggle desaturation by checking the current filter style
-    if (document.body.style.filter === "grayscale(100%)") {
-      // If already desaturated, remove desaturation
-      removeDesaturation();
-      sendResponse({ result: "Desaturation removed" });
-    } else {
-      // Otherwise, desaturate the website
+    console.log("Toggling state...");
+    if (state === 0) {
       desaturateWebsite();
       sendResponse({ result: "Website desaturated" });
+    } else if (state === 1) {
+      saturateWebsite();
+      sendResponse({ result: "Website saturated" });
+    } else {
+      removeFilters();
+      sendResponse({ result: "Filters removed" });
     }
+    state = (state + 1) % 3; // Cycle state between 0, 1, and 2
   }
 });
 
@@ -50,4 +59,15 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     document.body.style.cursor = "url('" + customCursorUrl + "'), auto";
   }
 });
+/*  POSSIBLE SOLUTION !!!!??
 
+  if (message.command === "enlargeCursor") {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      * { cursor: url('images/BiggerCursor.png'), auto !important; }
+    `;
+    document.head.appendChild(style);
+    sendResponse({ status: "success" });
+  }
+
+*/
