@@ -1,9 +1,10 @@
 # Web Accessibility Extension
 
-This repository contains the source code for a web accessibility extension designed to improve the accessibility of web content. The extension offers a variety of features that allow users to customize the appearance and functionality of web pages to meet their individual needs.
+This repository contains the source code for a web accessibility extension designed to improve the accessibility of web content. The extension offers a variety of features that allow users to customize the appearance and functionality of web pages to meet their individual needs. 
+![Screenshot_3](https://github.com/P2020134/Thesis/assets/92644348/9e4bd405-2e90-48d1-a499-e2b7b59bee38)
+
 
 ## Features
-
 - **Font Size Adjuster**: Allows users to adjust the font size on web pages for easier reading.
 - **Image/Video Remover**: Enables users to remove images and videos from web pages, focusing solely on text and other content.
 - **Desaturation**: Reduces color saturation on web pages, making colors less intense and easier on the eyes.
