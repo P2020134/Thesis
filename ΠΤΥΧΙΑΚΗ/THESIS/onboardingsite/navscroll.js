@@ -27,6 +27,7 @@ function handleScroll(event) {
     const nextIndex = (currentIndex + 1) % pages.length;
     // Return the URL of the next page
     return pages[nextIndex];
+    
   }
   
   // Function to get the URL of the previous HTML page
