@@ -75,50 +75,6 @@ function toggleDesaturation() {
   });
 }
 
-function enableTextSelection() {
-  document.addEventListener('mouseup', handleTextSelection);
-}
-
-function handleTextSelection(event) {
-  var selectedText = window.getSelection().toString();
-  if (selectedText.length > 0) {
-    // Once text is selected, call a function to summarize it
-    summarizeText(selectedText);
-  }
-}
-
-function summarizeText(text) {
-  console.log("Summarizing text:", text); // Log the text being summarized
-  const apiUrl = "https://api.ayfie.io/text/v1/summarize";
-  const apiKey = "xZjeLoHFDZWUtYYtvDAVotoLdNHDqXojgLXiIlPpsUVPwBdgxQ";
-  
-  const requestData = {
-    text: text,
-  };
-
-  fetch(apiUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify(requestData),
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log("Summarized text:", data.summary); // Log the summarized text
-    displaySummarizedText(data.summary);
-  })
-  .catch(error => {
-    console.error("Error calling Ayfie API:", error);
-  });
-}
-
-function displaySummarizedText(summary) {
-  var summarizedTextDiv = document.getElementById('summarizedText');
-  summarizedTextDiv.textContent = summary;
-}
-
 // Function to enable keyboard navigation outline
 function enableKeyboardOutline() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -154,7 +110,6 @@ function enableKeyboardOutline() {
     });
   });
 }
-
 
 
 
