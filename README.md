@@ -10,6 +10,7 @@ This repository contains the source code for a web accessibility extension desig
 - **Desaturation**: Reduces color saturation on web pages, making colors less intense and easier on the eyes.
 - **Cursor Enlarger**: Magnifies the mouse cursor for users with limited vision.
 - **Keyboard Navigation**: Enhances navigation by allowing users to traverse web pages using the keyboard.
+- **Dyslexia Friendly Mode**: Changes all the fonts of the page to Arial in order to make them more readable, especially if the user has dyslexia.
 
 ## Supported Platforms
 
