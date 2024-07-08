@@ -6,6 +6,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       // Alternatively, you can set document.documentElement.innerHTML to the initial state if you have it stored somewhere.
       sendResponse("Initial state restored.");
     }
+    if (message.command === "applyArialFont") {
+      applyArialFont();
+      sendResponse({ result: "Font applied" });
+    }
   });
 
 
@@ -14,8 +18,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 
 let state = 0; // 0: normal, 1: desaturated, 2: saturated
-
-
 function saturateWebsite(){
   document.body.style.filter = "saturate(200%)";
 }
@@ -24,14 +26,11 @@ function desaturateWebsite() {
   // Apply CSS filter to desaturate the entire body of the webpage
   document.body.style.filter = "grayscale(100%)";
 }
-
-
 // Function to remove all filters
 function removeFilters() {
   document.body.style.filter = "none";
 }
 
-// OLD CODE THAT DESATURATES THAT ALSO WORKS 
 // Listen for messages from the extension popup
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   console.log("Message received:", message);
@@ -71,3 +70,22 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   }
 
 */
+
+
+function applyArialFont() {
+  const style = document.createElement("style");
+  style.textContent = `
+    body, p, h1, h2, h3, h4, h5, h6, span, a, div, li, ul, ol {
+      font-family: 'Arial', sans-serif !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+// Listen for messages from the extension popup
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+  if (message.command === "applyArialFont") {
+    applyArialFont();
+    sendResponse({ result: "Font applied" });
+  }
+});

@@ -55,14 +55,14 @@ function restoreInitialState() {
   });
 }
 
-
+// Function to Enlarge the Cursor 
 function enlargeCursor() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(tabs[0].id, { command: "enlargeCursor" });
   });
 }
 
-
+// Function to toggle the Saturation Levels 
 function toggleDesaturation() {
   console.log("Sending message to toggle desaturation...");
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
@@ -112,7 +112,18 @@ function enableKeyboardOutline() {
   });
 }
 
-
+// Function to change the font to a more dyslexia friendly one 
+function changeFont() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { command: "applyArialFont" }, function(response) {
+      if (chrome.runtime.lastError) {
+        console.error("Error sending message:", chrome.runtime.lastError.message);
+      } else {
+        console.log("Message sent successfully:", response);
+      }
+    });
+  });
+}
 
 
 
@@ -126,7 +137,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var removeImagesButton = document.getElementById('removeImagesButton');
     var revertButton = document.getElementById('revertButton');
     var SaturationButton= document.getElementById("SaturationButton");
-   
+    var changeFontButton = document.getElementById("DyslexiaButton");
+
 
     // Event listeners
     increaseButton.addEventListener('click', function () {
@@ -146,7 +158,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     SaturationButton.addEventListener("click", toggleDesaturation);
-
+    
+    changeFontButton.addEventListener("click", changeFont);
    
   });
 
