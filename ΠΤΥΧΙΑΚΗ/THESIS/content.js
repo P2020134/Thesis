@@ -13,10 +13,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   });
 
 
-
-
-
-
 let state = 0; // 0: normal, 1: desaturated, 2: saturated
 function saturateWebsite(){
   document.body.style.filter = "saturate(200%)";
