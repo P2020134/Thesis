@@ -125,7 +125,18 @@ function changeFont() {
   });
 }
 
-
+// Function to toggle the cursor size
+function toggleCursorSize() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { command: "toggleCursorSize" }, function(response) {
+      if (chrome.runtime.lastError) {
+        console.error("Error sending message:", chrome.runtime.lastError.message);
+      } else {
+        console.log("Message sent successfully:", response);
+      }
+    });
+  });
+}
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -138,6 +149,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var revertButton = document.getElementById('revertButton');
     var SaturationButton= document.getElementById("SaturationButton");
     var changeFontButton = document.getElementById("DyslexiaButton");
+    var enlargeCursorButton = document.getElementById('enlargeCursorButton');
+
 
 
     // Event listeners
@@ -158,15 +171,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     SaturationButton.addEventListener("click", toggleDesaturation);
-    
+
     changeFontButton.addEventListener("click", changeFont);
    
-  });
+    enlargeCursorButton.addEventListener('click', toggleCursorSize);
+   });
 
+  
+
+  /*
   document.getElementById('enlargeCursorButton').addEventListener('click', function() {
     chrome.runtime.sendMessage({ command: "enlargeCursor" });
   });
-
+ */
   document.getElementById('enableOutlineButton').addEventListener('click', enableKeyboardOutline);
 
 
