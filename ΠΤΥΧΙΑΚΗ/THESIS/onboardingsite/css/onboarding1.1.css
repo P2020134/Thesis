@@ -14,13 +14,13 @@ body {
   align-items: center;
   justify-content: flex-start;
   position: fixed;
-  left: 29%;
+  left: 25%;
   top: 30%;
   transform: translate(-50%, -50%);
 }
 
 .text-container1 {
-  font-size: 1.563rem;
+  font-size: 2rem;
   padding: 1.25rem;
   color: black;
   text-align: left;
@@ -29,7 +29,7 @@ body {
   justify-content: flex-start;
   position: fixed;
   left: 22.5%;
-  top: 50%;
+  top: 60%;
   transform: translate(-50%, -50%);
   height: 12.5rem;
   width: 37.5rem;

@@ -1,58 +1,44 @@
-
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-}
-   
-p1{
-        opacity:90%;
-        top:20vh;
-        left:42.5vw;
-        position: fixed;
-        font-size:3.55rem;
-        font-family:"Poppins", sans-serif;
-        letter-spacing:2px;
-        padding:0 5px;
-        /*HOW TO HIGHLIGHT THE TEXT!!!!!!!!!!!!!!!*/
-        background: linear-gradient(
-        to bottom,
-            transparent 50%,
-            #fce041 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
-p2{
-        top:29vh;
-        left:36vw;
-        position: fixed;
-        font-size:1.55rem;
-        font-family:"Poppins", sans-serif;
-        letter-spacing:2px;
+p1 {
+  opacity: 90%;
+  top: 20vh;
+  left: 42.5vw;
+  position: fixed;
+  font-size: 3.55rem;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 2px;
+  padding: 0 5px;
+  background: linear-gradient(to bottom, transparent 50%, #fce041 50%);
 }
 
-
-p3 {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        background-color: white; 
-        color: black; 
-        padding: 15px 0; 
-        font-size: 15px;
-
+p2 {
+  top: 29vh;
+  left: 36vw;
+  position: fixed;
+  font-size: 1.55rem;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 2px;
 }
 
-p4{
-        font-size: larger;
-        text-align: justify;
-        padding: 0 5px; /* Add padding to the left and right */
+p {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  color: black;
+  padding: 15px 0;
+  font-size: 15px;
 }
-
 
 .palette {
   display: flex;
@@ -63,70 +49,82 @@ p4{
   margin: 10px;
   margin-top: 10%;
 }
+
 .color {
-    position: relative;
-    height: 100%;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 600;
-    letter-spacing: 1px;
-    transition: all 0.3s ease-out;
-  }
-  
-  .color span {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    z-index: 2; /* Ensure the original text is above the hover text */
-  }
-  
-  .color::after {
-    content: attr(data-hover-text);
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: opacity 2s ease; /* Smooth transition on hover */
-    z-index: 1;
-  }
-  
-  .color:not(:hover)::after {
-    transition-duration: 0s; /* Instant transition when not hovering */
-  }
-  
+  position: relative;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-out;
+}
+
+.color span {
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.color::after {
+  content: attr(data-hover-text);
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: opacity 2s ease;
+  z-index: 1;
+}
+
+.color:not(:hover)::after {
+  transition-duration: 0s;
+}
+
 .color:hover {
   flex: 2;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-  
-  .color:hover span {
-    opacity: 0; /* Hide the original text on hover */
-  }
-  
-  .color:hover::after {
-    opacity: 1; /* Show the hover text on hover */
-  }
 
-  .color:nth-child(1) {
-    background: #264653;
-  }
-  
-  .color:nth-child(2) {
-    background: #2a9d8f;
-  }
-  
-  .color:nth-child(3) {
-    background: #e9c46a;
-  }
-  
-  .color:nth-child(4) {
-    background: #f4a261;
-  }
-  
-  
+.color:hover span {
+  opacity: 0;
+}
+
+.color:hover::after {
+  opacity: 1;
+}
+
+.color:nth-child(1) {
+  background: #264653;
+}
+
+.color:nth-child(2) {
+  background: #2a9d8f;
+}
+
+.color:nth-child(3) {
+  background: #e9c46a;
+}
+
+.color:nth-child(4) {
+  background: #f4a261;
+}
+
+.icon img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.icon-text {
+  margin-top: 15px;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+}
