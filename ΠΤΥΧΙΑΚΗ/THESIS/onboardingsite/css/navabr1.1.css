@@ -48,4 +48,5 @@ nav ul li:not(.logo-link):hover a:not(.logo-link) {
     right: 4.5%; /* Same as the right position of the nav bar */
     top: 5.75rem; /* Same as the top position of the nav bar */
     border-top: 3px solid black;
+    border-bottom:none;
 }

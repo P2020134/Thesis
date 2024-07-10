@@ -5,7 +5,9 @@ body {
   height: 100vh;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: #d1c2aa;
 }
+
 
 p1 {
   opacity: 90%;

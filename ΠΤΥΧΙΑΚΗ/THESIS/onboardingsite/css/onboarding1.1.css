@@ -1,6 +1,6 @@
 body {
 	font-family: 'Montserrat', sans-serif;
-	background-color:#f4f4f4;
+	background-color:#d1c2aa;
   overflow-y: auto; /* Allow vertical scrolling */
   
 }
@@ -45,3 +45,5 @@ body {
 .underline{
   text-decoration: underline;
 }
+
+
