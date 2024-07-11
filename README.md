@@ -1,7 +1,8 @@
 # Web Accessibility Extension
 
 This repository contains the source code for a web accessibility extension designed to improve the accessibility of web content. The extension offers a variety of features that allow users to customize the appearance and functionality of web pages to meet their individual needs. 
-![Screenshot_3](https://github.com/P2020134/Thesis/assets/92644348/9e4bd405-2e90-48d1-a499-e2b7b59bee38)
+
+![Screenshot_4](https://github.com/P2020134/Thesis/assets/92644348/39f1edcf-c476-4094-aeff-ae6eeb1ed0c3)
 
 
 ## Features
@@ -11,6 +12,10 @@ This repository contains the source code for a web accessibility extension desig
 - **Cursor Enlarger**: Magnifies the mouse cursor for users with limited vision.
 - **Keyboard Navigation**: Enhances navigation by allowing users to traverse web pages using the keyboard.
 - **Dyslexia Friendly Mode**: Changes all the fonts of the page to Arial in order to make them more readable, especially if the user has dyslexia.
+
+![Screenshot_5](https://github.com/P2020134/Thesis/assets/92644348/3ceec3eb-e3eb-46ee-8932-f99150a5b342)
+
+
 
 ## Supported Platforms
 
