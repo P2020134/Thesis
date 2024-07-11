@@ -36,11 +36,13 @@ p {
   left: 0;
   width: 100%;
   text-align: center;
-  background-color: white;
+  background-color: #d1c2aa;
   color: black;
   padding: 15px 0;
   font-size: 15px;
+  z-index: 1000; /* Optional: Ensures it stays above other elements */
 }
+
 
 .palette {
   display: flex;
