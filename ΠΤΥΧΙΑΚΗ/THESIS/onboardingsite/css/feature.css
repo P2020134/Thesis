@@ -134,9 +134,11 @@ p {
 }
 
 .icon-text {
-  margin-top: 15px;
-  font-size: 25px;
+  margin-top: 20px;
+  font-size: 20px;
   color: white;
   text-align: center;
+  font-family: "Poppins", sans-serif;
 }
+  
 
