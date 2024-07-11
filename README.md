@@ -12,6 +12,9 @@ This repository contains the source code for a web accessibility extension desig
 - **Keyboard Navigation**: Enhances navigation by allowing users to traverse web pages using the keyboard.
 - **Dyslexia Friendly Mode**: Changes all the fonts of the page to Arial in order to make them more readable, especially if the user has dyslexia.
 
+![Screenshot_3](https://github.com/P2020134/Thesis/assets/92644348/d3dde74b-e46b-467d-9903-29a7f2e2f5f3)
+
+
 ## Supported Platforms
 
 This extension can be used on a variety of popular web browsers, including:
