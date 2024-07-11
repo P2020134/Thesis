@@ -43,7 +43,6 @@ p {
   z-index: 1000; /* Optional: Ensures it stays above other elements */
 }
 
-
 .palette {
   display: flex;
   height: 300px;
@@ -120,6 +119,14 @@ p {
   background: #f4a261;
 }
 
+.color:nth-child(5) {
+  background: #e76f51;
+}
+
+.color:nth-child(6) {
+  background: #a8dadc;
+}
+
 .icon img {
   width: 100px;
   height: 100px;
@@ -132,3 +139,4 @@ p {
   color: white;
   text-align: center;
 }
+
