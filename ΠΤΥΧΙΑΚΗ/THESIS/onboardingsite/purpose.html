@@ -16,28 +16,64 @@
             </li>
             <li class="home"><a href="#">Home</a></li>
             <li class="features"><a href="#">Features</a></li>
-            <li class="purpose"><a href="#">Purpose</a></li>
+            <li class="purpose"><a href="#">FAQ</a></li>
             <li class="contact"><a href='#'>Contact</a></li>
 
             
         </ul>
     </nav>
-    
     <hr class="black-line"></hr>
 
-    <p1>Purpose<p1>
+    <p1>Frequently Asked Questions</p1>
 
-    <p2 >
-        Our mission is to revolutionize digital accessibility, creating a web landscape where inclusivity is the norm. Through innovative Chrome extensions, we empower users of all abilities to navigate and interact seamlessly, ensuring everyone has equal access to the online world. We believe in a future where technology bridges gaps rather than creating barriers, leaving a lasting impact on the way individuals experience and engage with the digital realm.
-    <p2>
-
-    <div class="container">
-        <div class="gif-container">
-            <img src="images/purpose.gif" alt="about us gif">
+   
+        <button class="accordion">What is the main purpose of this extension?</button>
+        <div class="panel">
+            <p>This extension is designed to enhance web accessibility by providing tools and features that make browsing the internet easier for individuals with disabilities.</p>
         </div>
-        <div class="vertical-line"></div>
-    </div>
+    
+        <button class="accordion">How do I install the extension?</button>
+        <div class="panel">
+            <p>You can install the extension from the Chrome Web Store. Simply click the "Add to Chrome" button and follow the prompts.</p>
+        </div>
+    
+        <button class="accordion">How do I use the text-to-speech feature?</button>
+        <div class="panel">
+            <p>After installing the extension, highlight any text on a webpage and click the text-to-speech icon in the extension toolbar to hear the text read aloud.</p>
+        </div>
+    
+        <button class="accordion">Can I customize the accessibility settings?</button>
+        <div class="panel">
+            <p>Yes, you can customize various settings such as text size, color contrast, and keyboard navigation through the extension's options menu.</p>
+        </div>
+    
+        <button class="accordion">Is this extension free to use?</button>
+        <div class="panel">
+            <p>Yes, this extension is completely free to use. Our goal is to make the web more accessible to everyone.</p>
+        </div>
+    
+        <button class="accordion">Who can I contact for support?</button>
+        <div class="panel">
+            <p>If you need support, you can reach out to us via the contact page on our website or email us at support@yourextension.com.</p>
+        </div>
 
+
+  
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
     <script src="navigate.js"></script>
 </body>
 </html>
