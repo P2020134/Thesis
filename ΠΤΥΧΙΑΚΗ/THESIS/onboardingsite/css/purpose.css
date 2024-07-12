@@ -59,7 +59,7 @@ body {
 }
 
 .card {
-  width: 60%;
+  width: 50%;
   height: auto;
   display: absolute;
   flex-direction: column;
@@ -78,3 +78,5 @@ body {
   position: absolute;
   right:2%;
 }
+
+

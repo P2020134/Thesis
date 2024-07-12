@@ -11,7 +11,7 @@ body {
 
 p1 {
   opacity: 90%;
-  top: 20vh;
+  top: 15vh;
   left: 42.5vw;
   position: fixed;
   font-size: 3.55rem;
@@ -22,7 +22,7 @@ p1 {
 }
 
 p2 {
-  top: 29vh;
+  top: 25vh;
   left: 36vw;
   position: fixed;
   font-size: 1.55rem;
