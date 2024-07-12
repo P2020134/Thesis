@@ -12,26 +12,8 @@ p1 {
   font-family: "Poppins", sans-serif;
   letter-spacing: 2px;
   padding: 0 5px;
-  background: linear-gradient(to bottom, transparent 50%, #92a8d1 50%);
+  background: linear-gradient(to bottom, transparent 50%, #2a9d8f 50%);
 }
-
-p2 {
-  font-size: 1.563rem;
-  padding: 1.25rem;
-  color: black;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  position: fixed;
-  left: 70%;
-  top: 55%;
-  transform: translate(-50%, -50%);
-  height: 12.5rem;
-  width: 37.5rem;
-}
-
-
 
 .accordion-container {
   position: absolute;
@@ -41,21 +23,21 @@ p2 {
 }
 
 .accordion {
-  background-color: #d1c2aa;
+  background-color: transparent;
   color: #333;
   cursor: pointer;
-  padding: 18px;
+  padding: 17px;
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
-  font-size: 18px;
+  font-size: 20px;
   transition: 0.4s;
   border-bottom: 1px solid #ccc;
 }
 
 .active, .accordion:hover {
-  background-color: #92a8d1;
+  background-color:transparent;
 }
 
 .panel {
@@ -64,4 +46,35 @@ p2 {
   background-color: white;
   overflow: hidden;
   border: 1px solid #ccc;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 30px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.card {
+  width: 60%;
+  height: auto;
+  display: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  background-color: #ffffff73;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+}
+
+.card-footer {
+  font-size: 1.2em;
+  color: #446;
+  position: absolute;
+  right:2%;
 }

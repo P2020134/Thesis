@@ -37,36 +37,38 @@ h2{
   justify-content: center;
   position: fixed; /* Change position to absolute */
   top: 35%; /* Adjust top position */
-  left: 19%; /* Adjust right position */
+  left: 16%; /* Adjust right position */
   border-radius: 20px;
   border: 1px solid #fcfcff;
-  background: linear-gradient(to right, #eb7d34, #fcab41);
+  background: linear-gradient(to right, #ff8d41, #fcab41);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 18px;
 }
 
 
 .container form .descr {
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: 500;
   color: #e8e8e8;
-  margin-bottom: 25px;
-  margin-top: 25px;
+  margin-bottom: 15px;
+  margin-top: 10px;
   text-align: center;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+  position:absolute;
+  top:10%;
 }
 
 .input, textarea {
   margin: 1em 0 1em 0;
-  width: 300px;
+  width: 450px;
   position: relative;
 }
 
 .input input, textarea {
-  font-size: 100%;
+  font-size: 1rem;
   padding: 0.7em;
   outline: none;
   color: #e8e8e8;
@@ -79,7 +81,7 @@ h2{
 }
 
 .input label {
-  font-size: 100%;
+  font-size: 1rem;
   position: absolute;
   left: 0;
   color: #e8e8e8;
@@ -91,17 +93,17 @@ h2{
 }
 
 .input :is(input:focus, input:valid)~label {
-  transform: translateY(-50%) scale(.9);
+  transform: translateY(-10%) scale(1);
   margin: 0em;
-  padding: 0.4em;
+  padding: 0.3em;
   background: transparent;
 }
 
 .input textarea:focus ~ label,
 .input textarea:valid ~ label {
-  transform: translateY(-50%) scale(.9);
+  transform: translateY(-50%) scale(1);
   margin: 0em;
-  padding: 0.4em;
+  padding: 0.3em;
   background: transparent;
 }
 
@@ -111,15 +113,17 @@ h2{
 
 .form button {
   color: #e8e8e8;
-  font-size: 15px;
+  font-size: 1rem;
   align-self: flex-start;
-  padding: 0.6em;
+  padding: 0.9em;
   border: none;
   cursor: pointer;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   background: transparent;
   transition: all 0.3s ease-in-out;
-  position: relative;
+  position: absolute;
+  bottom:9%;
+  left:35%;
   overflow: hidden;
 }
 
@@ -144,8 +148,6 @@ h2{
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-
-
 .img-container {
   position: fixed;
   top: 20%;
@@ -154,3 +156,11 @@ h2{
   }
 
 
+  .form button[type="submit"] {
+   position:absolute;
+   bottom:-40%;
+   left:30%;
+   font-size: 20px;
+   font-family:"Poppins", sans-serif;
+  }
+  
