@@ -17,7 +17,7 @@ h1{
 	background: linear-gradient(
 	to bottom,
 		transparent 50%,
-		#fcab41 50%);
+		#eb7d34 50%);
 	
 }
 h2{
@@ -40,7 +40,7 @@ h2{
   left: 19%; /* Adjust right position */
   border-radius: 20px;
   border: 1px solid #fcfcff;
-  background: linear-gradient(to right, #FDA766, #fcab41);
+  background: linear-gradient(to right, #eb7d34, #fcab41);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 18px;
 }
 
