@@ -17,4 +17,3 @@ document.getElementById('decreaseButton').addEventListener('click', function() {
 });
 
 
-//DEN NOMIZO NA XREIAZETAI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
