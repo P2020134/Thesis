@@ -174,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var SaturationButton= document.getElementById("SaturationButton");
     var changeFontButton = document.getElementById("DyslexiaButton");
     var enlargeCursorButton = document.getElementById('enlargeCursorButton');
+    var enableOutlineButton = document.getElementById('enableOutlineButton');
 
 
 
@@ -202,12 +203,10 @@ document.addEventListener('DOMContentLoaded', function () {
       toggleCursorSize();
     });
 
+    enableOutlineButton.addEventListener('click', function(){
+      enableKeyboardOutline();
     });
-   
-     document.getElementById('enableOutlineButton').addEventListener('click', enableKeyboardOutline);
 
-  
-  
-
+    });
 });
  
