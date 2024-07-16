@@ -5,12 +5,12 @@
   "manifest_version": 3,
   "action": {
     "default_popup": "./popup.html",
-    "default_icon": "./icon01.png"
+    "default_icon": "images/icon01.png"
   },
   "icons": {
-    "16": "./icon01.png",
-    "48": "./icon01.png",
-    "128": "./icon01.png"
+    "16": "images/icon01.png",
+    "48": "images/icon01.png",
+    "128": "images/icon01.png"
   },
   "content_scripts": [
     {
