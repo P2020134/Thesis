@@ -55,13 +55,6 @@ function restoreInitialState() {
   });
 }
 
-// Function to Enlarge the Cursor 
-function enlargeCursor() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { command: "enlargeCursor" });
-  });
-}
-
 // Function to toggle the Saturation Levels 
 function toggleDesaturation() {
   console.log("Sending message to toggle desaturation...");
@@ -125,10 +118,37 @@ function changeFont() {
   });
 }
 
-// Function to toggle the cursor size
+/*
+
+let isCursorEnlarged = false;
+
+document.getElementById('enlargeCursorButton').addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            function: toggleCursor,
+            args: [isCursorEnlarged]
+        }, () => {
+            // Toggle the state variable
+            isCursorEnlarged = !isCursorEnlarged;
+        });
+    });
+});
+
+function toggleCursor(isEnlarged) {
+  if (isEnlarged) {
+      document.body.classList.remove('enlarge-cursor');
+  } else {
+      document.body.classList.add('enlarge-cursor');
+  }
+}
+
+
+
+*/
 function toggleCursorSize() {
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { command: "toggleCursorSize" }, function(response) {
+    chrome.tabs.sendMessage(tabs[0].id, { command: "enlargeCursor" }, function(response) {
       if (chrome.runtime.lastError) {
         console.error("Error sending message:", chrome.runtime.lastError.message);
       } else {
@@ -137,6 +157,10 @@ function toggleCursorSize() {
     });
   });
 }
+
+
+
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -174,19 +198,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     changeFontButton.addEventListener("click", changeFont);
    
-    enlargeCursorButton.addEventListener('click', toggleCursorSize);
-   });
+    enlargeCursorButton.addEventListener('click', function(){
+      toggleCursorSize();
+    });
+
+    });
+   
+     document.getElementById('enableOutlineButton').addEventListener('click', enableKeyboardOutline);
 
   
-
-  /*
-  document.getElementById('enlargeCursorButton').addEventListener('click', function() {
-    chrome.runtime.sendMessage({ command: "enlargeCursor" });
-  });
- */
-  document.getElementById('enableOutlineButton').addEventListener('click', enableKeyboardOutline);
-
-
   
 
 });
