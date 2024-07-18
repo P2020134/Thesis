@@ -15,6 +15,10 @@ p1 {
   background: linear-gradient(to bottom, transparent 50%, #2a9d8f 50%);
 }
 
+
+p{
+  font-size: 18px;
+}
 .accordion-container {
   position: absolute;
   right: 20px;
