@@ -30,20 +30,21 @@
 		<h2>Let us know if we can help answer your questions</h2>
 
         <div class="container">
-            <form class="form">
+            <!--Form submit, cant work  in pages browsed as HTML files , it should be opened as a web server|| it works with Formspree!!-->
+            <form action="https://formspree.io/f/xanwngyw" method="POST" class="form">
               <div class="descr">Contact us</div>
               <div class="input">
-                  <input required="" autocomplete="off" type="text">
+                  <input name="name" required="" autocomplete="off" type="text">
                   <label for="name">Name</label>
               </div>
         
               <div class="input">
-                  <input required="" autocomplete="off" name="email" type="text">
+                  <input name="email" required="" autocomplete="off" name="email" type="text">
                   <label for="email">E-mail</label>
               </div>
         
               <div class="input">
-                  <textarea required="" cols="30" rows="1" id="message"></textarea>
+                  <textarea name="message" required="" cols="30" rows="1" id="message"></textarea>
                   <label for="message">Message</label>
               </div>
               <button type="submit" ">Send message </button>
