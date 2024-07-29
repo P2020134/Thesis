@@ -2,7 +2,7 @@
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     // Set uninstall URL
-    chrome.runtime.setUninstallURL("https://forms.gle/TwXH77zFgNnfY1rX6");
+    chrome.runtime.setUninstallURL("https://forms.gle/RMD1UuNmb6gmNTGh8");
 
     // Open onboarding page
     chrome.tabs.create({
