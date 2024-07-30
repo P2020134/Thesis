@@ -21,25 +21,6 @@ chrome.runtime.onInstalled.addListener((details) => {
           console.log("Initial state saved:", message.initialState);
         }
       });
-    } else if (message.command === "enlargeCursor") {
-      // Enlarge cursor command
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        if (tabs.length > 0) {
-          chrome.scripting.executeScript({
-            target: { tabId: tabs[0].id },
-            files: ["content.js"], // Specify the content script file
-            function: () => {
-              if (chrome.runtime.lastError) {
-                console.error("Error executing content script:", chrome.runtime.lastError.message);
-              } else {
-                console.log("Content script executed successfully.");
-              }
-            }
-          });
-        } else {
-          console.error("No active tabs found.");
-        }
-      });
     }
   });
 });
