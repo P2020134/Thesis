@@ -14,13 +14,49 @@ function removeFilters() {
   document.body.style.filter = "none";
 }
 
-function enlargeCursor() {
-  const style = document.createElement('style');
-  style.innerHTML = `
-      html {cursor: url("https://i.sstatic.net/wu8CP.png"), auto;}
-    `;
-  document.head.appendChild(style);
+
+function applyCustomCursor() {
+  console.log("applyCustomCursor function called");
+  const existingCursor = document.querySelector('.kursor');
+  if (existingCursor) {
+    console.log("Cursor already applied");
+    return;
+  }
+
+  const kursorScript = document.createElement('script');
+  kursorScript.src = chrome.runtime.getURL('js/kursor.min.js');
+  document.body.appendChild(kursorScript);
+
+  kursorScript.onload = () => {
+    console.log("kursor.min.js loaded successfully");
+    new kursor({
+      type: 4,
+      color: '#000000',
+      el: 'body',
+      removeDefaultCursor: true
+    });
+  };
+
+  // Ensure no other CSS rules are hiding the cursor
+  document.body.style.cursor = 'default !important';
 }
+
+function toggleCursorSize() {
+  console.log("toggleCursorSize function called");
+  const body = document.body;
+  if (!body) return;
+
+  if (body.style.cursor === 'none') {
+    body.style.cursor = ''; // Reset to default cursor
+    console.log("Default cursor restored");
+  } else {
+    body.style.cursor = 'none'; // Hide the default cursor
+    console.log("Default cursor hidden");
+  }
+}
+
+
+
 
 function applyArialFont() {
   const style = document.createElement("style");
@@ -46,9 +82,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       sendResponse({ result: "Font applied" });
       break;
 
-    case "enlargeCursorButton":
-      enlargeCursor();
-      sendResponse({ result: "success" });
+    case "applyCustomCursor":
+      applyCustomCursor();
+      sendResponse({ result: "Cursor applied" });
+      break;
+
+    case "toggleCursorSize":
+      toggleCursorSize();
+      sendResponse({ result: "Cursor size toggled" });
       break;
 
     case "toggleDesaturation":

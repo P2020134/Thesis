@@ -4,8 +4,8 @@ function adjustFontSize(change) {
     chrome.scripting.executeScript({
       target: { tabId: tabs[0].id },
       func: function (change) {
-        // Select all text-containing elements on the page (paragraphs, headings, spans, etc.)
-        let textElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span');
+        // Select all text-containing elements on the page 
+        let textElements = document.querySelectorAll('nav,p, h1, h2, h3, h4, h5, h6, span');
         // Loop through each text-containing element
         textElements.forEach(function (element) {
           // Get the computed style of the element
@@ -118,11 +118,9 @@ function changeFont() {
   });
 }
 
-
-
 function toggleCursorSize() {
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { command: "enlargeCursor" }, function(response) {
+    chrome.tabs.sendMessage(tabs[0].id, { command: "toggleCursorSize" }, function(response) {
       if (chrome.runtime.lastError) {
         console.error("Error sending message:", chrome.runtime.lastError.message);
       } else {
@@ -132,11 +130,6 @@ function toggleCursorSize() {
   });
 }
 
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
   // Initialization
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -145,12 +138,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var decreaseButton = document.getElementById('decreaseButton');
     var removeImagesButton = document.getElementById('removeImagesButton');
     var revertButton = document.getElementById('revertButton');
-    var SaturationButton= document.getElementById("SaturationButton");
+    var SaturationButton = document.getElementById("SaturationButton");
     var changeFontButton = document.getElementById("DyslexiaButton");
     var enlargeCursorButton = document.getElementById('enlargeCursorButton');
     var enableOutlineButton = document.getElementById('enableOutlineButton');
-
-
 
     // Event listeners
     increaseButton.addEventListener('click', function () {
@@ -173,14 +164,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     changeFontButton.addEventListener("click", changeFont);
    
-    enlargeCursorButton.addEventListener('click', function(){
-      toggleCursorSize();
-    });
+    enlargeCursorButton.addEventListener('click', toggleCursorSize);
 
-    enableOutlineButton.addEventListener('click', function(){
+    enableOutlineButton.addEventListener('click', function () {
       enableKeyboardOutline();
     });
-
-    });
+  });
 });
- 
