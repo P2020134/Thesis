@@ -9,7 +9,7 @@ This repository contains the source code for a web accessibility extension desig
 - **Font Size Adjuster**: Allows users to adjust the font size on web pages for easier reading.
 - **Image/Video Remover**: Enables users to remove images and videos from web pages, focusing solely on text and other content.
 - **Saturation Levels**: Reduces/Enhances the color of saturation on web pages, making colors less/more intense.
-- **Cursor Enlarger**: Magnifies the mouse cursor for users with limited vision.
+- **Cursor Enlarger**: Magnifies the mouse cursor for users with limited vision. (Currently has conflicts with the css , not working )
 - **Keyboard Navigation**: Enhances navigation by allowing users to traverse web pages using the keyboard.
 - **Dyslexia Friendly Mode**: Changes all the fonts of the page to Arial in order to make them more readable, especially if the user has dyslexia.
 
