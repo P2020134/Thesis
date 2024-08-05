@@ -7,7 +7,8 @@ body{
 h1{
 	opacity:90%;
 	top:8vh;
-	left:40vw;
+	left:50%;
+  transform: translateX(-50%); /* Adjust position to center */
 	position: fixed;
 	font-size:3.55rem;
 	font-family:"Poppins", sans-serif;
@@ -18,11 +19,11 @@ h1{
 	to bottom,
 		transparent 50%,
 		#ff8d41 50%);
-	
 }
 h2{
 	top:23vh;
-	left:37vw;
+	left:50%;
+  transform: translateX(-50%); /* Adjust position to center */
 	position: fixed;
 	font-family:"Poppins", sans-serif;
 	color:#331D2C;
@@ -30,18 +31,18 @@ h2{
 }
 
 .container {
-  width: 550px;
-  height: 450px;
+  width: 34.375rem;
+  height: 28.125rem;
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed; /* Change position to absolute */
   top: 35%; /* Adjust top position */
   left: 16%; /* Adjust right position */
-  border-radius: 20px;
+  border-radius: 1.25rem;
   border: 1px solid #fcfcff;
   background: linear-gradient(to right, #ff8d41, #fcab41);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px .3125rem 1.125rem;
 }
 
 
@@ -49,8 +50,8 @@ h2{
   font-size: 1.5rem;
   font-weight: 500;
   color: #e8e8e8;
-  margin-bottom: 15px;
-  margin-top: 10px;
+  margin-bottom: .9375rem;
+  margin-top: .625rem;
   text-align: center;
 }
 
@@ -63,7 +64,7 @@ h2{
 
 .input, textarea {
   margin: 1em 0 1em 0;
-  width: 450px;
+  width: 28.125rem;
   position: relative;
 }
 
@@ -118,7 +119,7 @@ h2{
   padding: 0.9em;
   border: none;
   cursor: pointer;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
   background: transparent;
   transition: all 0.3s ease-in-out;
   position: absolute;
@@ -145,7 +146,7 @@ h2{
 
 .form button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 .3125rem .9375rem rgba(0, 0, 0, 0.3);
 }
 
 .img-container {
@@ -160,7 +161,24 @@ h2{
    position:absolute;
    bottom:-40%;
    left:30%;
-   font-size: 20px;
+   font-size: 1.25rem;
    font-family:"Poppins", sans-serif;
+  }
+  
+
+  @media (max-width: 1600px) {
+  
+    h1{
+      border: 3px solid red;
+    }
+
+    .container{
+      left:50%;
+    transform: translateX(-50%); /* Adjust position to center */
+    }
+
+    .img-container{
+      visibility: collapse;
+    }
   }
   

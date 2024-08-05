@@ -2,7 +2,7 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	background-color:#d1c2aa;
   overflow-y: auto; /* Allow vertical scrolling */
-  
+  overflow:hidden;
 }
 
 
@@ -29,7 +29,7 @@ body {
   justify-content: flex-start;
   position: fixed;
   left: 22.5%;
-  top: 60%;
+  top: 55%;
   transform: translate(-50%, -50%);
   height: 12.5rem;
   width: 37.5rem;
@@ -46,4 +46,76 @@ body {
   text-decoration: underline;
 }
 
+/*LAPTOP  1600*900*/
+@media(max-width: 1600px){
+  .text-container {
+    font-size: 6vw;
+  }
+  .text-container1 {
+    font-size: 1.7rem;
+    left:25.5%;
+    top:50%;
+    width:36%;
+    border: 3px solid red ;
+  }
 
+  .img-container{
+    width: 20%; /* Adjust the percentage as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 70vh;
+    margin-top: 20vh; 
+  }
+}
+  
+
+
+
+/* HD (1366x768) L*/
+@media (max-width: 1366px) {
+  
+  .text-container {
+      font-size: 6vw;
+  }
+  .text-container1 {
+      font-size: 1.7rem;
+      width: 80%;
+      left:27.2%;
+      top:50%;
+      width:40%;
+      border: 3px solid black;
+  }
+ 
+  .img-container{
+    width: 20%; /* Adjust the percentage as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 70vh;
+    margin-top: 20vh;
+
+    
+  }
+}
+
+
+@media (max-width: 1090px) {
+  
+  .text-container {
+      font-size: 6vw;
+  }
+  .text-container1 {
+      font-size: 1.7rem;
+      width: 80%;
+      left:27.2%;
+      top:53%;
+      width:40%;
+      border: 3px solid blue;
+  }
+ 
+  .img-container{
+    width: 15%; /* Adjust the percentage as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 55vh;
+    margin-top: 20vh;
+
+    
+  }
+}
