@@ -64,6 +64,7 @@ body {
     height: auto; /* Maintain aspect ratio */
     margin-left: 70vh;
     margin-top: 20vh; 
+    position:fixed;
   }
 }
   

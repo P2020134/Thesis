@@ -64,7 +64,7 @@ body {
 }
 
 .card {
-  width: 50%;
+  width: 55%;
   height: auto;
   display: absolute;
   flex-direction: column;
@@ -85,3 +85,23 @@ body {
 }
 
 
+
+@media(max-width: 1200px ){
+  .img{
+   visibility: collapse; 
+  }
+
+  .card{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    transform: translateX(-40%); /* Adjust position to center */
+    
+  }
+
+  p1{
+    border: 3px solid red ;
+  }
+
+}
+  
