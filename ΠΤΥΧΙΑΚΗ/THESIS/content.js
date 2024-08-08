@@ -3,60 +3,14 @@ let state = 0; // 0: normal, 1: desaturated, 2: oversaturated
 function saturateWebsite() {
   document.body.style.filter = "saturate(200%)";
 }
-
 function desaturateWebsite() {
   // Apply CSS filter to desaturate the entire body of the webpage
   document.body.style.filter = "grayscale(100%)";
 }
-
 // Function to remove all filters for the saturation levels
 function removeFilters() {
   document.body.style.filter = "none";
 }
-
-
-function applyCustomCursor() {
-  console.log("applyCustomCursor function called");
-  const existingCursor = document.querySelector('.kursor');
-  if (existingCursor) {
-    console.log("Cursor already applied");
-    return;
-  }
-
-  const kursorScript = document.createElement('script');
-  kursorScript.src = chrome.runtime.getURL('js/kursor.min.js');
-  document.body.appendChild(kursorScript);
-
-  kursorScript.onload = () => {
-    console.log("kursor.min.js loaded successfully");
-    new kursor({
-      type: 4,
-      color: '#000000',
-      el: 'body',
-      removeDefaultCursor: true
-    });
-  };
-
-  // Ensure no other CSS rules are hiding the cursor
-  document.body.style.cursor = 'default !important';
-}
-
-function toggleCursorSize() {
-  console.log("toggleCursorSize function called");
-  const body = document.body;
-  if (!body) return;
-
-  if (body.style.cursor === 'none') {
-    body.style.cursor = ''; // Reset to default cursor
-    console.log("Default cursor restored");
-  } else {
-    body.style.cursor = 'none'; // Hide the default cursor
-    console.log("Default cursor hidden");
-  }
-}
-
-
-
 
 function applyArialFont() {
   const style = document.createElement("style");
@@ -67,6 +21,36 @@ function applyArialFont() {
   `;
   document.head.appendChild(style);
 }
+
+
+function enableKeyboardNav() {
+  document.addEventListener('keydown', keyboardNavHandler);
+  localStorage.setItem('keyboardNavEnabled', 'true');
+}
+
+function disableKeyboardNav() {
+  document.removeEventListener('keydown', keyboardNavHandler);
+  localStorage.setItem('keyboardNavEnabled', 'false');
+}
+
+function keyboardNavHandler(event) {
+  const focusableElements = 'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  switch (event.key) {
+    case 'ArrowUp':
+      window.scrollBy(0, -100);
+      break;
+    case 'ArrowDown':
+      window.scrollBy(0, 100);
+      break;
+    default:
+      return;
+  }
+  event.preventDefault();
+}
+
+
+
+
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "restoreInitialState") {
@@ -107,9 +91,56 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       state = (state + 1) % 3; // Cycle state between 0, 1, and 2
       break;
 
+    case 'toggleKeyboardNav':
+      const currentStatus = localStorage.getItem('keyboardNavEnabled');
+      if (currentStatus === 'true') {
+        disableKeyboardNav();
+        sendResponse({ status: 'Keyboard navigation disabled' });
+      } else {
+        enableKeyboardNav();
+        sendResponse({ status: 'Keyboard navigation enabled' });
+      }
+      break;
+
     default:
       console.log("Unknown command:", message.command);
       sendResponse({ result: "Unknown command" });
       break;
   }
 });
+
+
+
+// Function to setup keyboard navigation
+function setupKeyboardNavigation() {
+  // Add outline style to all focusable elements
+  const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  focusableElements.forEach(element => {
+    element.addEventListener('focus', function () {
+      element.style.outline = '2px solid blue'; // Change outline color and width as needed
+    });
+    element.addEventListener('blur', function () {
+      element.style.outline = ''; // Remove outline when focus is lost
+    });
+  });
+
+  // Scroll page up or down on arrow key press
+  document.addEventListener('keydown', function (event) {
+    switch (event.key) {
+      case 'ArrowUp':
+        window.scrollBy(0, -100); // Adjust the value as needed for the desired scrolling distance
+        break;
+      case 'ArrowDown':
+        window.scrollBy(0, 100); // Adjust the value as needed for the desired scrolling distance
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+  });
+
+}
+
+// Initialize keyboard navigation when the content script loads
+setupKeyboardNavigation();
+

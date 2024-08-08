@@ -4,19 +4,12 @@ function adjustFontSize(change) {
     chrome.scripting.executeScript({
       target: { tabId: tabs[0].id },
       func: function (change) {
-        // Select all text-containing elements on the page 
-        let textElements = document.querySelectorAll('nav,p, h1, h2, h3, h4, h5, h6, span');
-        // Loop through each text-containing element
+        let textElements = document.querySelectorAll('nav, p, h1, h2, h3, h4, h5, h6, span');
         textElements.forEach(function (element) {
-          // Get the computed style of the element
           let computedStyle = window.getComputedStyle(element);
-          // Get the font size property from the computed style
           let fontSize = computedStyle.fontSize;
-          // Parse the font size to extract the numeric value (remove "px" or "em" units)
           let numericFontSize = parseFloat(fontSize);
-          // Adjust the font size by the specified amount
           let adjustedFontSize = numericFontSize + change;
-          // Apply the adjusted font size to the element
           element.style.fontSize = adjustedFontSize + 'px';
         });
       },
@@ -31,8 +24,7 @@ function removeImages() {
     chrome.scripting.executeScript({
       target: { tabId: tabs[0].id },
       func: function () {
-        // Remove images and videos by setting display: none
-        document.querySelectorAll('img, video,[data-section="short_video_reel"]').forEach(element => element.style.display = 'none');
+        document.querySelectorAll('img, video, [data-section="short_video_reel"]').forEach(element => element.style.display = 'none');
       }
     });
   });
@@ -42,7 +34,6 @@ function removeImages() {
 function restoreInitialState() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var tab = tabs[0];
-    // Check if the tab has finished loading and if the content script is ready
     if (tab.status === 'complete') {
       chrome.tabs.sendMessage(tab.id, { action: "restoreInitialState" }, function (response) {
         if (!response) {
@@ -55,11 +46,10 @@ function restoreInitialState() {
   });
 }
 
-// Function to toggle the Saturation Levels 
+// Function to toggle the Saturation Levels
 function toggleDesaturation() {
-  console.log("Sending message to toggle desaturation...");
-  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { command: "toggleDesaturation" }, function(response) {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { command: "toggleDesaturation" }, function (response) {
       if (chrome.runtime.lastError) {
         console.error("Error sending message:", chrome.runtime.lastError.message);
       } else {
@@ -69,8 +59,34 @@ function toggleDesaturation() {
   });
 }
 
-// Function to enable keyboard navigation outline
-function enableKeyboardOutline() {
+// Function to change the font to a more dyslexia-friendly one
+function changeFont() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { command: "applyArialFont" }, function (response) {
+      if (chrome.runtime.lastError) {
+        console.error("Error sending message:", chrome.runtime.lastError.message);
+      } else {
+        console.log("Message sent successfully:", response);
+      }
+    });
+  });
+}
+
+// Function to toggle cursor size
+function toggleCursorSize() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { command: "toggleCursorSize" }, function (response) {
+      if (chrome.runtime.lastError) {
+        console.error("Error sending message:", chrome.runtime.lastError.message);
+      } else {
+        console.log("Message sent successfully:", response);
+      }
+    });
+  });
+}
+
+// Function to enable keyboard navigation
+function enableKeyboardNavigation() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.scripting.executeScript({
       target: { tabId: tabs[0].id },
@@ -105,35 +121,9 @@ function enableKeyboardOutline() {
   });
 }
 
-// Function to change the font to a more dyslexia friendly one 
-function changeFont() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { command: "applyArialFont" }, function(response) {
-      if (chrome.runtime.lastError) {
-        console.error("Error sending message:", chrome.runtime.lastError.message);
-      } else {
-        console.log("Message sent successfully:", response);
-      }
-    });
-  });
-}
-
-function toggleCursorSize() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { command: "toggleCursorSize" }, function(response) {
-      if (chrome.runtime.lastError) {
-        console.error("Error sending message:", chrome.runtime.lastError.message);
-      } else {
-        console.log("Message sent successfully:", response);
-      }
-    });
-  });
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   // Initialization
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var tabId = tabs[0].id;
     var increaseButton = document.getElementById('increaseButton');
     var decreaseButton = document.getElementById('decreaseButton');
     var removeImagesButton = document.getElementById('removeImagesButton');
@@ -163,11 +153,11 @@ document.addEventListener('DOMContentLoaded', function () {
     SaturationButton.addEventListener("click", toggleDesaturation);
 
     changeFontButton.addEventListener("click", changeFont);
-   
+
     enlargeCursorButton.addEventListener('click', toggleCursorSize);
 
     enableOutlineButton.addEventListener('click', function () {
-      enableKeyboardOutline();
+      enableKeyboardNavigation();
     });
   });
 });
