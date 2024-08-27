@@ -49,9 +49,6 @@ function keyboardNavHandler(event) {
 }
 
 
-
-
-
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "restoreInitialState") {
     // Restore the initial state by reloading the page
@@ -69,11 +66,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     case "applyCustomCursor":
       applyCustomCursor();
       sendResponse({ result: "Cursor applied" });
-      break;
-
-    case "toggleCursorSize":
-      toggleCursorSize();
-      sendResponse({ result: "Cursor size toggled" });
       break;
 
     case "toggleDesaturation":
