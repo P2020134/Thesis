@@ -1,11 +1,9 @@
-/* Import Google Fonts at the top */
-
 @import url('https://fonts.googleapis.com/css?lang=en&family=Product+Sans|Roboto:400,700');
 
 body {
   font-family: 'Product Sans', 'Roboto', sans-serif;
-  width: 450px;
-  height: 600px;
+  width: 28.125rem; /* 450px converted to rem */
+  height: 37.5rem; /* 600px converted to rem */
   margin: 0;
   display: flex;
   align-items: center;
@@ -17,40 +15,36 @@ h1 {
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
   font-weight: 400;
+  font-size: 1.125rem; /* Assuming a standard size */
 }
 
 button {
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem; /* 10px converted to rem */
   color: #090909;
-  padding: 0.7em 1.7em;
-  font-size: 18px;
-  border-radius: 0.5em;
+  padding: 0.4375rem 1.0625rem; /* 0.7em 1.7em converted to rem */
+  font-size: 1.125rem; /* 18px converted to rem */
+  border-radius: 0.3125rem; /* 0.5em converted to rem */
   background: #e8e8e8;
-  border: 1px solid #e8e8e8;
-  transition: all .3s;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
-  margin-right: 10px; /* Add horizontal margin between buttons */
-  width: 180px; /* Specify the width of the button */
-  height: 120px; /* Specify the height of the button */
+  border: 0.0625rem solid #e8e8e8; /* 1px converted to rem */
+  transition: all 0.3s;
+  box-shadow: 0.375rem 0.375rem 0.75rem #c5c5c5, -0.375rem -0.375rem 0.75rem #ffffff; /* 6px and 12px converted to rem */
+  margin-right: 0.625rem; /* 10px converted to rem */
+  width: 11.25rem; /* 180px converted to rem */
+  height: 7.5rem; /* 120px converted to rem */
 }
 
 button:active {
   color: #666;
-  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+  box-shadow: inset 0.25rem 0.25rem 0.75rem #c5c5c5, inset -0.25rem -0.25rem 0.75rem #ffffff; /* 4px and 12px converted to rem */
 }
 
 .button-text {
-  margin-top: 5px; /* Add space between icon and text */
+  margin-top: 0.3125rem; /* 5px converted to rem */
 }
 
-.icon{
-  width: 70px;
+.icon {
+  width: 4.375rem; /* 70px converted to rem */
   height: auto; /* Maintain aspect ratio */
-  grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
-  display: grid;
   display: block; /* Ensure the image is treated as a block element */
   margin: auto; /* Center the image horizontally */
-  
 }
-
-
