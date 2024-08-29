@@ -31,6 +31,7 @@ This extension can be used on a variety of popular web browsers, including:
 6. **Safari** (Note: Limited support due to restrictions in the Safari Extension Store)
 
 ## Installation
+![installation_of-extension_tut](https://github.com/user-attachments/assets/a9b7055c-b8fa-4c58-bc35-790b848a3faf)
 
 To install the extension, follow these steps:
 
