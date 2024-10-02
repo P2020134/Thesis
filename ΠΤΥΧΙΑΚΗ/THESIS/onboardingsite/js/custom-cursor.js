@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
         new kursor({
             type: 1,
-            removeDefaultCursor: false // Whether to remove the default cursor
+            removeDefaultCursor: false
         });
         console.log("kursor initialized successfully");
     } catch (error) {

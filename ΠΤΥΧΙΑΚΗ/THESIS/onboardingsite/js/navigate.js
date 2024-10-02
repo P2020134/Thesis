@@ -21,6 +21,10 @@ window.onload = function () {
 
   document.querySelector('.logo-link').addEventListener('click', function () {
     navigateTo('onboarding1.1.html');
-});
+  });
+
+  document.querySelector('.credits').addEventListener('click', function () {
+    navigateTo('credits.html');
+    });
   
 };
