@@ -4,7 +4,7 @@ function adjustFontSize(change) {
     chrome.scripting.executeScript({
       target: { tabId: tabs[0].id },
       func: function (change) {
-        let textElements = document.querySelectorAll('nav, p, h1, h2, h3, h4, h5, h6, span');
+        let textElements = document.querySelectorAll('nav, p, h1, h2, h3, h4, h5, h6, span, ul, ol ,li');
         textElements.forEach(function (element) {
           let computedStyle = window.getComputedStyle(element);
           let fontSize = computedStyle.fontSize;
