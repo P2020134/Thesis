@@ -136,3 +136,62 @@ function setupKeyboardNavigation() {
 // Initialize keyboard navigation when the content script loads
 setupKeyboardNavigation();
 
+let isFocusModeEnabled = false; // Track the state of focus mode
+
+// Function to enable focus mode
+function enableFocusMode() {
+  isFocusModeEnabled = true; // Set focus mode to enabled
+
+  // Clear any existing blur on the body
+  document.body.style.filter = "none";
+
+  // Add event listeners for hover effect
+  const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+
+  focusableElements.forEach(element => {
+    // Apply blur to the body when hovering over an element
+    element.addEventListener('mouseenter', function() {
+      document.body.style.filter = "blur(10px)"; // Apply blur to the body
+      element.style.filter = "none"; // Clear blur from hovered element
+    });
+
+    // Reset the hover effect when the mouse leaves the element
+    element.addEventListener('mouseleave', function() {
+      // Remove the blur from the body only if no other elements are hovered
+      const currentlyHovered = document.querySelector(':hover');
+      if (!currentlyHovered || currentlyHovered !== element) {
+        document.body.style.filter = "none"; // Clear blur if no elements are hovered
+      }
+    });
+  });
+}
+
+// Function to disable focus mode
+function disableFocusMode() {
+  isFocusModeEnabled = false; // Set focus mode to disabled
+  document.body.style.filter = "none"; // Remove any blur effect from the body
+
+  // Remove hover listeners to prevent memory leaks
+  const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  focusableElements.forEach(element => {
+    element.removeEventListener('mouseenter', null);
+    element.removeEventListener('mouseleave', null);
+  });
+}
+
+// Update the message listener
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  switch (message.command) {
+    case "toggleFocusMode":
+      if (isFocusModeEnabled) {
+        disableFocusMode();
+        sendResponse({ result: "Focus mode disabled" });
+      } else {
+        enableFocusMode();
+        sendResponse({ result: "Focus mode enabled" });
+      }
+      break;
+
+    // Other cases...
+  }
+});
