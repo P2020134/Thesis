@@ -140,6 +140,20 @@ function enableKeyboardNavigation() {
   });
 }
 
+// Function to toggle focus mode
+function toggleFocusMode() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { command: "toggleFocusMode" }, function (response) {
+      if (chrome.runtime.lastError) {
+        console.error("Error sending message:", chrome.runtime.lastError.message);
+      } else {
+        console.log("Message sent successfully:", response);
+      }
+    });
+  });
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
   // Initialization
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -149,10 +163,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var revertButton = document.getElementById('revertButton');
     var SaturationButton = document.getElementById("SaturationButton");
     var changeFontButton = document.getElementById("DyslexiaButton");
-    var enlargeCursorButton = document.getElementById('enlargeCursorButton');
     var enableOutlineButton = document.getElementById('enableOutlineButton');
     var darkmodeButton = document.getElementById('darkmodeButton');
-
+    var focusModeButton = document.getElementById('focusModeButton');
     // Event listeners
     increaseButton.addEventListener('click', function () {
       adjustFontSize(2); // Increase font size by 2 pixels
@@ -178,6 +191,8 @@ document.addEventListener('DOMContentLoaded', function () {
       enableKeyboardNavigation();
     });
 
+    focusModeButton.addEventListener('click', toggleFocusMode);
+  
     darkmodeButton.addEventListener('click', function () {
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.scripting.executeScript({
@@ -186,53 +201,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
     });
-  });
-});
 
-
-
-
-// Function to toggle focus mode
-function toggleFocusMode() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { command: "toggleFocusMode" }, function (response) {
-      if (chrome.runtime.lastError) {
-        console.error("Error sending message:", chrome.runtime.lastError.message);
-      } else {
-        console.log("Message sent successfully:", response);
-      }
-    });
-  });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  // Initialization
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var increaseButton = document.getElementById('increaseButton');
-    var decreaseButton = document.getElementById('decreaseButton');
-    var removeImagesButton = document.getElementById('removeImagesButton');
-    var revertButton = document.getElementById('revertButton');
-    var saturationButton = document.getElementById("SaturationButton");
-    var changeFontButton = document.getElementById("DyslexiaButton");
-    var enlargeCursorButton = document.getElementById('enlargeCursorButton');
-    var enableOutlineButton = document.getElementById('enableOutlineButton');
-    var darkmodeButton = document.getElementById('darkmodeButton');
-    var focusModeButton = document.getElementById('focusModeButton'); // New button for focus mode
-
-       // Focus Mode Button
-       focusModeButton.addEventListener('click', function () {
-        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-          chrome.tabs.sendMessage(tabs[0].id, { command: "toggleFocusMode" }, function (response) {
-            if (chrome.runtime.lastError) {
-              console.error("Error sending message:", chrome.runtime.lastError.message);
-            } else {
-              console.log("Focus mode toggled:", response.result);
-            }
-          });
+    focusModeButton.addEventListener('click', function () {
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { command: "toggleFocusMode" }, function (response) {
+          if (chrome.runtime.lastError) {
+            console.error("Error sending message:", chrome.runtime.lastError.message);
+          } else {
+            console.log("Focus mode toggled:", response.result);
+          }
         });
       });
+    });
 
-    // Event listener for focus mode
-    focusModeButton.addEventListener('click', toggleFocusMode);
+
   });
 });
