@@ -23,62 +23,6 @@ function applyArialFont() {
 }
 
 
-function enableKeyboardNav() {
-  document.addEventListener('keydown', keyboardNavHandler);
-  localStorage.setItem('keyboardNavEnabled', 'true');
-}
-
-function disableKeyboardNav() {
-  document.removeEventListener('keydown', keyboardNavHandler);
-  localStorage.setItem('keyboardNavEnabled', 'false');
-}
-
-function keyboardNavHandler(event) {
-  const focusableElements = 'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
-  switch (event.key) {
-    case 'ArrowUp':
-      window.scrollBy(0, -100);
-      break;
-    case 'ArrowDown':
-      window.scrollBy(0, 100);
-      break;
-    default:
-      return;
-  }
-  event.preventDefault();
-}
-
-// Function to setup keyboard navigation
-function setupKeyboardNavigation() {
-  // Add outline style to all focusable elements
-  const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-  focusableElements.forEach(element => {
-    element.addEventListener('focus', function () {
-      element.style.outline = '2px solid blue'; // Change outline color and width as needed
-    });
-    element.addEventListener('blur', function () {
-      element.style.outline = ''; // Remove outline when focus is lost
-    });
-  });
-
-  // Scroll page up or down on arrow key press
-  document.addEventListener('keydown', function (event) {
-    switch (event.key) {
-      case 'ArrowUp':
-        window.scrollBy(0, -100); // Adjust the value as needed for the desired scrolling distance
-        break;
-      case 'ArrowDown':
-        window.scrollBy(0, 100); // Adjust the value as needed for the desired scrolling distance
-        break;
-      default:
-        return;
-    }
-    event.preventDefault();
-  });
-
-}
-
-
 let isFocusModeEnabled = false; // Track whether focus mode is enabled
 
 function enableFocusMode() {
@@ -118,18 +62,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       }
       state = (state + 1) % 3;
       break;
-
-    case 'toggleKeyboardNav':
-      const currentStatus = localStorage.getItem('keyboardNavEnabled');
-      if (currentStatus === 'true') {
-        disableKeyboardNav();
-        sendResponse({ status: 'Keyboard navigation disabled' });
-      } else {
-        enableKeyboardNav();
-        sendResponse({ status: 'Keyboard navigation enabled' });
-      }
-      break;
-
     case "toggleFocusMode":
       if (isFocusModeEnabled) {
         disableFocusMode();
