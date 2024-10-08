@@ -106,51 +106,57 @@ function toggleDarkMode() {
   }
 }
 
-// Function to enable keyboard navigation
-function enableKeyboardNavigation() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.scripting.executeScript({
-      target: { tabId: tabs[0].id },
-      func: function () {
-        const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-        focusableElements.forEach(element => {
-          element.addEventListener('focus', function () {
-            element.style.outline = '2px solid blue';
-          });
-          element.addEventListener('blur', function () {
-            element.style.outline = '';
-          });
-        });
+let isFocusModeEnabled = false;
 
-        document.addEventListener('keydown', function (event) {
-          switch (event.key) {
-            case 'ArrowUp':
-              window.scrollBy(0, -100);
-              break;
-            case 'ArrowDown':
-              window.scrollBy(0, 100);
-              break;
-            default:
-              return;
-          }
-          event.preventDefault();
-        });
+// Function to enable focus mode
+function enableFocusMode() {
+  isFocusModeEnabled = true; // Set focus mode to enabled
+  document.body.style.filter = "none"; // Clear any existing blur
+
+  // Add event listeners for hover effect
+  const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+
+  focusableElements.forEach(element => {
+    // Apply blur to the body when hovering over an element
+    element.addEventListener('mouseenter', function() {
+      document.body.style.filter = "blur(10px)"; // Apply blur to the body
+      element.style.position = 'relative'; // Set position to relative
+      element.style.zIndex = '2'; // Bring the hovered element above the blurred background
+    });
+
+    // Reset the hover effect when the mouse leaves the element
+    element.addEventListener('mouseleave', function() {
+      // Remove the blur from the body only if no other elements are hovered
+      const currentlyHovered = document.querySelector(':hover');
+      if (!currentlyHovered || currentlyHovered !== element) {
+        document.body.style.filter = "none"; // Clear blur if no elements are hovered
+        element.style.zIndex = '1'; // Reset zIndex back to 1 or default
+        element.style.position = ''; // Reset position
       }
     });
   });
 }
 
+// Function to disable focus mode
+function disableFocusMode() {
+  isFocusModeEnabled = false; // Set focus mode to disabled
+  document.body.style.filter = "none"; // Remove any blur effect from the body
+
+  // Remove hover listeners to prevent memory leaks
+  const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  focusableElements.forEach(element => {
+    element.removeEventListener('mouseenter', null);
+    element.removeEventListener('mouseleave', null);
+  });
+}
+
 // Function to toggle focus mode
 function toggleFocusMode() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { command: "toggleFocusMode" }, function (response) {
-      if (chrome.runtime.lastError) {
-        console.error("Error sending message:", chrome.runtime.lastError.message);
-      } else {
-        console.log("Message sent successfully:", response);
-      }
-    });
-  });
+  if (isFocusModeEnabled) {
+    disableFocusMode(); // Disable focus mode if it's currently enabled
+  } else {
+    enableFocusMode(); // Enable focus mode if it's currently disabled
+  }
 }
 
 
