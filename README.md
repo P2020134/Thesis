@@ -10,10 +10,11 @@ This repository contains the source code for a web accessibility extension desig
 - **Image/Video Remover**: Enables users to remove images and videos from web pages, focusing solely on text and other content.
 - **Saturation Levels**: Reduces/Enhances the color of saturation on web pages, making colors less/more intense.
 - **Dark Theme**: Applies a dark theme for the user , making it easier for reading especially in occasions with minimal lighting.
-- **Keyboard Navigation**: Enhances navigation by allowing users to traverse web pages using the keyboard.
+- **Focus Mode**: Facilitates navigation for users with visual or cognitive impairments by minimizing distractions through focus mode, allowing clearer interaction with key content.
 - **Dyslexia Friendly Mode**: Changes all the fonts of the page to Arial in order to make them more readable, especially if the user has dyslexia.
 
-![image](https://github.com/user-attachments/assets/eb1e9f20-eb3b-41fc-9b78-4e01b45dd485)
+![image](https://github.com/user-attachments/assets/f56c0baa-d526-4664-a222-df12430a388d)
+
 
 
 
@@ -24,11 +25,9 @@ This repository contains the source code for a web accessibility extension desig
 This extension can be used on a variety of popular web browsers, including:
 
 1. **Google Chrome**
-2. **Mozilla Firefox**
-3. **Microsoft Edge**
-4. **Opera**
-5. **Brave**
-6. **Safari** (Note: Limited support due to restrictions in the Safari Extension Store)
+2. **Microsoft Edge**
+3. **Brave**
+4. **Safari** (Note: Limited support due to restrictions in the Safari Extension Store)
 
 ## Installation
 ![installation_of-extension_tut](https://github.com/user-attachments/assets/a9b7055c-b8fa-4c58-bc35-790b848a3faf)
