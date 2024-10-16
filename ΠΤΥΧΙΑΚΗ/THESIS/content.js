@@ -1,4 +1,5 @@
 let state = 0; // 0: normal, 1: desaturated, 2: oversaturated
+let isFocusModeEnabled = false; // Track whether focus mode is enabled
 
 function saturateWebsite() {
   document.body.style.filter = "saturate(200%)";
@@ -23,8 +24,6 @@ function applyArialFont() {
 }
 
 
-let isFocusModeEnabled = false; // Track whether focus mode is enabled
-
 function enableFocusMode() {
   document.body.style.filter = "blur(5px)"; // Example of focus mode behavior
   isFocusModeEnabled = true; // Update the state
@@ -35,7 +34,6 @@ function disableFocusMode() {
   isFocusModeEnabled = false; // Update the state
 }
 
-/// Handle message to toggle focus mode
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "restoreInitialState") {
     location.reload();
@@ -52,12 +50,15 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     case "toggleDesaturation":
       if (state === 0) {
         desaturateWebsite();
+        console.log("Current state:Website Desaturated ", state); 
         sendResponse({ result: "Website desaturated" });
       } else if (state === 1) {
         saturateWebsite();
+        console.log("Current state:Website Saturated ", state); 
         sendResponse({ result: "Website saturated" });
       } else {
         removeFilters();
+        console.log("Current state:Filters removed ", state); 
         sendResponse({ result: "Filters removed" });
       }
       state = (state + 1) % 3;

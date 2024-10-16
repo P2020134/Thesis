@@ -1,3 +1,4 @@
+
 console.log("Popup script loaded");
 
 document.getElementById('increaseButton').addEventListener('click', function() {
@@ -15,5 +16,6 @@ document.getElementById('decreaseButton').addEventListener('click', function() {
     chrome.tabs.sendMessage(tabs[0].id, { action: 'adjustFontSize', value: 'smaller' });
   });
 });
+
 
 

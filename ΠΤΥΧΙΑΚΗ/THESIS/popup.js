@@ -169,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var revertButton = document.getElementById('revertButton');
     var SaturationButton = document.getElementById("SaturationButton");
     var changeFontButton = document.getElementById("DyslexiaButton");
-    //var enableOutlineButton = document.getElementById('enableOutlineButton');
     var darkmodeButton = document.getElementById('darkmodeButton');
     var focusModeButton = document.getElementById('focusModeButton');
     // Event listeners
@@ -192,12 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
     SaturationButton.addEventListener("click", toggleDesaturation);
 
     changeFontButton.addEventListener("click", changeFont);
-    /*
-    enableOutlineButton.addEventListener('click', function () {
-      enableKeyboardNavigation();
-    });
-    */
-    focusModeButton.addEventListener('click', toggleFocusMode);
+    
   
     darkmodeButton.addEventListener('click', function () {
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
