@@ -27,9 +27,10 @@ This extension can be used on a variety of popular web browsers, including:
 1. **Google Chrome**
 2. **Microsoft Edge**
 3. **Brave**
-4. **Safari** (Note: Limited support due to restrictions in the Safari Extension Store)
+4. **Opera** 
+5. **Vivaldi**
 
-## Installation
+## Installation (or Download from the [Chrome Web Store](https://chromewebstore.google.com/detail/accesibility-for-all/cilafiaffhgjmceeokfcmdgfihibmmoa) )
 ![installation_of-extension_tut](https://github.com/user-attachments/assets/a9b7055c-b8fa-4c58-bc35-790b848a3faf)
 
 To install the extension, follow these steps:
@@ -40,7 +41,7 @@ To install the extension, follow these steps:
 4. Enable developer mode.
 5. Load the unpacked extension from the downloaded files.
 
-## Uninstallation
+## Uninstall
 
 If you decide to uninstall the extension, you will be redirected to an uninstall page where we kindly ask for your feedback. This feedback is crucial for the continual improvement of the extension and helps us understand user needs better.
 
