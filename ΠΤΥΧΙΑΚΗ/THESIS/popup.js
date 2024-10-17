@@ -106,49 +106,7 @@ function toggleDarkMode() {
   }
 }
 
-let isFocusModeEnabled = false;
 
-// Function to enable focus mode
-function enableFocusMode() {
-  isFocusModeEnabled = true; // Set focus mode to enabled
-  document.body.style.filter = "none"; // Clear any existing blur
-
-  // Add event listeners for hover effect
-  const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-
-  focusableElements.forEach(element => {
-    // Apply blur to the body when hovering over an element
-    element.addEventListener('mouseenter', function() {
-      document.body.style.filter = "blur(10px)"; // Apply blur to the body
-      element.style.position = 'relative'; // Set position to relative
-      element.style.zIndex = '2'; // Bring the hovered element above the blurred background
-    });
-
-    // Reset the hover effect when the mouse leaves the element
-    element.addEventListener('mouseleave', function() {
-      // Remove the blur from the body only if no other elements are hovered
-      const currentlyHovered = document.querySelector(':hover');
-      if (!currentlyHovered || currentlyHovered !== element) {
-        document.body.style.filter = "none"; // Clear blur if no elements are hovered
-        element.style.zIndex = '1'; // Reset zIndex back to 1 or default
-        element.style.position = ''; // Reset position
-      }
-    });
-  });
-}
-
-// Function to disable focus mode
-function disableFocusMode() {
-  isFocusModeEnabled = false; // Set focus mode to disabled
-  document.body.style.filter = "none"; // Remove any blur effect from the body
-
-  // Remove hover listeners to prevent memory leaks
-  const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-  focusableElements.forEach(element => {
-    element.removeEventListener('mouseenter', null);
-    element.removeEventListener('mouseleave', null);
-  });
-}
 
 // Function to toggle focus mode
 function toggleFocusMode() {

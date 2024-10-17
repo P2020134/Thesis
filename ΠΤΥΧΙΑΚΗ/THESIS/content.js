@@ -24,15 +24,6 @@ function applyArialFont() {
 }
 
 
-function enableFocusMode() {
-  document.body.style.filter = "blur(5px)"; // Example of focus mode behavior
-  isFocusModeEnabled = true; // Update the state
-}
-
-function disableFocusMode() {
-  document.body.style.filter = "none"; // Remove the focus mode effect
-  isFocusModeEnabled = false; // Update the state
-}
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "restoreInitialState") {
