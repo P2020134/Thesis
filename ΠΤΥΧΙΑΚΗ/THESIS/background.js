@@ -6,9 +6,11 @@ chrome.runtime.onInstalled.addListener((details) => {
 
     // Open onboarding page
     chrome.tabs.create({
-      url: "onboardingsite/onboarding1.1.html"
+      url: "https://p2020134.github.io/OnboardingSite/"
     });
   }
+
+
   
   // Handle messages from content scripts and other sources
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
