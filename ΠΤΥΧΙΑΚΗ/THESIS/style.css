@@ -44,7 +44,7 @@ button:active {
 }
 
 .icon {
-  width: 4.375rem; /* 70px converted to rem */
+  width: 3.575rem; /* 70px converted to rem */
   height: auto; /* Maintain aspect ratio */
   display: block; /* Ensure the image is treated as a block element */
   margin: auto; /* Center the image horizontally */
