@@ -48,3 +48,8 @@ button:active {
   display: block; /* Ensure the image is treated as a block element */
   margin: auto; /* Center the image horizontally */
 }
+
+.kofi{
+  margin-top: .9375rem;
+
+}
