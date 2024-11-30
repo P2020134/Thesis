@@ -15,7 +15,7 @@ h1 {
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 1.125rem; /* Assuming a standard size */
+  font-size: 0.7rem; /* Assuming a standard size */
 }
 
 button {
@@ -30,7 +30,7 @@ button {
   box-shadow: 0.375rem 0.375rem 0.75rem #c5c5c5, -0.375rem -0.375rem 0.75rem #ffffff; /* 6px and 12px converted to rem */
   margin-right: 0.625rem; /* 10px converted to rem */
   width: 11.25rem; /* 180px converted to rem */
-  height: 7.5rem; /* 120px converted to rem */
+  height: 6.5rem; /* 120px converted to rem */
 }
 
 button:active {
