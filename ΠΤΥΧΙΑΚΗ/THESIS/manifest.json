@@ -1,7 +1,7 @@
 {
   "name": "Accesibility for ALL",
   "description": "Chrome extension that improves access on the web using techniques like: Text-Size Adjuster & Voice/Keyboard Handling",
-  "version": "0.2.6",
+  "version": "1.2.6",
   "manifest_version": 3,
   "action": {
     "default_popup": "./popup.html",
